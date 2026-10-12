@@ -2,12 +2,16 @@
 
 import { Textarea } from "@/components/ui/textarea";
 import { useModeStore } from "../store/useModeStore";
+import { useSettingsStore } from "../store/useSettingsStore";
 
 export function CalculatorField() {
   const { isRudeMode } = useModeStore();
+  const { apiKey, provider } = useSettingsStore();
   return (
     <>
       <input type="hidden" name="isRudeMode" value={isRudeMode.toString()} />
+      <input type="hidden" name="apiKey" value={apiKey.toString()} />
+      <input type="hidden" name="provider" value={provider.toString()} />
       <div className="flex flex-col gap-1.5 mb-4">
         <h2 className="text-xl font-bold">
           {isRudeMode ? "Spill the beans 😈" : "Type your message 😇"}

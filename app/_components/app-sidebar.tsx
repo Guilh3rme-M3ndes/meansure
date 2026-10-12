@@ -1,9 +1,7 @@
 "use client";
-
-import { useState } from "react";
-import { X } from "lucide-react"; // 1. Importando o ícone de fechar
+import { X } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button"; // Importe o botão se for usar a variante ghost
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -20,6 +18,7 @@ import {
   SidebarHeader,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { useSettingsStore } from "../store/useSettingsStore";
 
 type Provider = {
   label: string;
@@ -32,8 +31,7 @@ const providers: Provider[] = [
 ];
 
 export function AppSidebar() {
-  const [provider, setProvider] = useState<string>("");
-  const [apiKey, setApiKey] = useState<string>("");
+  const { apiKey, provider, setApiKey, setProvider } = useSettingsStore();
 
   const { setOpen } = useSidebar();
 
@@ -53,6 +51,7 @@ export function AppSidebar() {
               Select your provider:
             </p>
             <Select
+              name={"provider"}
               value={provider}
               onValueChange={(val) => setProvider(val || "")}
             >
@@ -80,6 +79,7 @@ export function AppSidebar() {
               Insert your API key:
             </p>
             <Input
+              name="providerKey"
               type="password"
               placeholder="sk-..."
               value={apiKey}

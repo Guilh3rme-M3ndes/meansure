@@ -11,3 +11,15 @@ export const ResponseSchema = z.object({
     }),
   ),
 });
+
+export type Sentence = {
+  index: number;
+  originalSentence: string;
+  suggestedSentence: string | null;
+  isModified: boolean;
+};
+
+export type AnalysisResult = {
+  originalText: string;
+  sentences: Sentence[];
+};

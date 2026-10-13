@@ -26,8 +26,8 @@ already aggressive enough.`;
 const POLITE_PROMPT = `Your goal is to split the user's input in sentences and based on the original text,
 return a list of polite versions of the initial input. Not every sentence is replacable, you should only add a sugestion if the initial input isn't
 already well-mannered enough.`;
-const WORDING_PROMPT = `You should avoid words that can be interpreted as racial prejudice, homophobic or sexist.
-The goal is to be funny, not aggressive.`;
+const WORDING_PROMPT = `You should avoid words that can be interpreted as racial prejudice or homophobic,
+but you can still use common swear words of the user's language as the intention is to be funny.`;
 const basicPromptObject = {
   name: "BASIC_PROMPT",
   value: BASIC_PROMPT,

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { useEffect } from "react";
 import { AngelIcon, DevilIcon } from "./header-icons";
+import { HelpModal } from "./help-modal";
 
 export function TopHeader() {
   const { isRudeMode, toggleMode } = useModeStore();
@@ -47,6 +48,7 @@ export function TopHeader() {
       </div>
 
       <div className="flex justify-end">
+        <HelpModal />
         <SidebarTrigger />
       </div>
     </header>

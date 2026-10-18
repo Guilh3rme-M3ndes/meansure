@@ -1,5 +1,5 @@
-// app/_components/analyzer-form.tsx
 "use client";
+import { toast } from "sonner";
 import { useState, useTransition } from "react";
 import { analyzeInput } from "@/actions/text-analysis/handle-text-analysis";
 import { CalculatorField } from "./calculator-field";
@@ -14,9 +14,13 @@ export function AnalyzerForm() {
     startTransition(async () => {
       try {
         const result = await analyzeInput(formData);
+        if ("error" in result) {
+          toast.error("Analysis Failed", { description: result.error });
+          return;
+        }
         setAiResponse(result);
       } catch (error) {
-        console.error("Erro na análise:", error);
+        console.error("Analysis error:", error);
       }
     });
   };

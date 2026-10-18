@@ -26,8 +26,8 @@ already aggressive enough.`;
 const POLITE_PROMPT = `Your goal is to split the user's input in sentences and based on the original text,
 return a list of polite versions of the initial input. Not every sentence is replacable, you should only add a sugestion if the initial input isn't
 already well-mannered enough.`;
-const WORDING_PROMPT = `You should avoid words that can be interpreted as racial prejudice or homophobic,
-but you can still use common swear words of the user's language as the intention is to be funny.`;
+const WORDING_PROMPT = `You should avoid words that can be interpreted as racial prejudice, homophobic or sexist. The intention
+is to be funny.`;
 const basicPromptObject = {
   name: "BASIC_PROMPT",
   value: BASIC_PROMPT,
@@ -44,6 +44,12 @@ const wordingPromptObject = {
   name: "WORDING_PROMPT",
   value: WORDING_PROMPT,
 };
+/**
+ * Adds mode specific prompts to the full prompt
+ * @param userText - The user's input
+ * @param isRudeMode - A flag that tells if the user has selected the rude mode.
+ * @returns A full prompt made of the base prompt, the user's input and the mode specific prompts added.
+ */
 export const createUserPrompt = (userText: string, isRudeMode: boolean) => {
   const promptParts: string[] = [];
   const userInputObject = {

@@ -2,8 +2,17 @@ import { cn } from "@/lib/utils";
 import { Sentence } from "@/types/model-response";
 import { useState } from "react";
 
+/**
+ * Interactive sentence block props
+ */
 interface SentenceBlockProps {
+  /**
+   * Contains both the original and suggested sentence.
+   */
   sentence: Sentence;
+  /**
+   * Sets the color theme (True = Purple / False = Green)
+   */
   isRudeMode: boolean;
 }
 

@@ -19,20 +19,10 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useSettingsStore } from "../store/useSettingsStore";
-
-type Provider = {
-  label: string;
-  value: string;
-};
-
-const providers: Provider[] = [
-  { label: "Gemini", value: "gemini" },
-  { label: "OpenAI", value: "openai" },
-];
+import { PROVIDERS } from "@/constants/providers";
 
 export function AppSidebar() {
   const { apiKey, provider, setApiKey, setProvider } = useSettingsStore();
-
   const { setOpen } = useSidebar();
 
   return (
@@ -58,13 +48,9 @@ export function AppSidebar() {
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Choose LLM" />
               </SelectTrigger>
-              <SelectContent
-                side="bottom"
-                sideOffset={4}
-                className="bg-white dark:bg-zinc-950 border border-border"
-              >
+              <SelectContent side="bottom" sideOffset={4}>
                 <SelectGroup>
-                  {providers.map((item) => (
+                  {PROVIDERS.map((item) => (
                     <SelectItem key={item.value} value={item.value}>
                       {item.label}
                     </SelectItem>

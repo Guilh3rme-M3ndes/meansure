@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from "@/components/ui/sonner";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SidebarProvider } from "@/components/ui/sidebar";
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               </div>
             </footer>
           </main>
+          <Toaster />
           <AppSidebar />
         </SidebarProvider>
       </body>
